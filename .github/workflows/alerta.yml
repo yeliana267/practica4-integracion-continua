@@ -8,11 +8,18 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Enviar notificación a ntfy.sh
+      - name: Enviar notificación personalizada a ntfy.sh
         run: |
-          curl -sS -X POST \
-            -H "Title: Push a main" \
-            -H "Priority: 4" \
-            -H "Tags: github,ci,devops" \
-            -d "Repositorio: ${{ github.repository }} | Autor: Yeliana Diaz 2024-0196" \
-            https://ntfy.sh/devops-itla
+          curl -X POST https://ntfy.sh/devops-itla \
+            -H "Title: Nuevo Deploy Detectado" \
+            -H "Priority: 5" \
+            -H "Tags: github,ci,test,alert" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "repositorio": "${{ github.repository }}",
+              "autor": "${{ github.actor }} | Yeliana Diaz 2024-0196",
+              "mensaje_commit": "${{ github.event.head_commit.message }}",
+              "commit_id": "${{ github.sha }}",
+              "rama": "${{ github.ref_name }}",
+              "estado": "Pipeline ejecutado correctamente"
+            }'
