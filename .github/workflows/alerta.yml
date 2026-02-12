@@ -14,5 +14,5 @@ jobs:
             -H "Title: Push a main" \
             -H "Priority: 4" \
             -H "Tags: github,ci,devops" \
-            -d "Repositorio: ${{ github.repository }} | Autor: Yeliana Diaz 2024-0196 | Commit: ${{ github.sha }}" \
+            -d "Repositorio: ${{ github.repository }} | Autor: Yeliana Diaz 2024-0196" \
             https://ntfy.sh/devops-itla
