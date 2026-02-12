@@ -19,7 +19,6 @@ jobs:
               "repositorio": "${{ github.repository }}",
               "autor": "${{ github.actor }} | Yeliana Diaz 2024-0196",
               "mensaje_commit": "${{ github.event.head_commit.message }}",
-              "commit_id": "${{ github.sha }}",
               "rama": "${{ github.ref_name }}",
               "estado": "Pipeline ejecutado correctamente"
             }'
