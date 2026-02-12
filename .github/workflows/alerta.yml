@@ -1,0 +1,18 @@
+name: Alerta CI (ntfy)
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar notificación a ntfy.sh
+        run: |
+          curl -sS -X POST \
+            -H "Title: Push a main" \
+            -H "Priority: 4" \
+            -H "Tags: github,ci,devops" \
+            -d "Repositorio: ${{ github.repository }} | Autor: ${{ github.actor }} | Commit: ${{ github.sha }}" \
+            https://ntfy.sh/devops-itla
